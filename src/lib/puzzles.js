@@ -177,7 +177,7 @@ export const puzzles = [
         { number: 3, clue: "Bought impulsively", row: 2, col: 0, length: 4, answer: "APED" },
       ],
       down: [
-        { number: 2, clue: "Vitalik's coin", row: 0, col: 1, length: 4, answer: "ETPH" },
+        { number: 2, clue: "Ethereum", row: 0, col: 1, length: 3, answer: "ETH" },
       ]
     }
   },
