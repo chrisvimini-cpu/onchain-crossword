@@ -35,16 +35,6 @@ function CluePanel({ puzzle, selectedClue, selectedDirection, onClueClick }) {
 
   return (
     <div className={styles.cluePanel}>
-      {selectedClue && (
-        <div className={styles.currentClue}>
-          <span className={styles.currentDirection}>
-            {selectedDirection.toUpperCase()}
-          </span>
-          <span className={styles.currentNumber}>{selectedClue.number}.</span>
-          <span className={styles.currentText}>{selectedClue.clue}</span>
-        </div>
-      )}
-
       <div className={styles.clueLists}>
         <div className={styles.clueSection}>
           <h3 className={styles.clueHeading}>Across</h3>
