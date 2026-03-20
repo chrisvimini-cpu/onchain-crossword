@@ -1,0 +1,136 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal-backdrop);
+  padding: var(--spacing-md);
+  animation: fadeIn 200ms ease-out;
+  overflow-y: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: var(--color-background);
+  border-radius: 8px;
+  padding: var(--spacing-xl);
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  animation: slideUp 300ms ease-out;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  margin: auto;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+}
+
+.closeButton:hover {
+  color: var(--color-text-primary);
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  font-size: 24px;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-lg);
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.sectionTitle {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  font-size: 16px;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.text {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.list {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  padding-left: var(--spacing-lg);
+}
+
+.list li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.list li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: var(--spacing-lg);
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .content {
+    gap: var(--spacing-md);
+  }
+}

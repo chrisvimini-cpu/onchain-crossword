@@ -1,0 +1,96 @@
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border: 1px solid var(--color-border-light);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: var(--color-background);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.cell:not(:last-child) {
+  border-right: none;
+}
+
+.cell.selected {
+  background: var(--color-brand-yellow);
+  border-color: var(--color-brand-yellow);
+  z-index: 2;
+}
+
+.cell.inWord {
+  background: var(--color-brand-yellow-20);
+  z-index: 1;
+}
+
+.cell.error {
+  animation: errorFlash var(--error-flash-duration) ease-out;
+}
+
+@keyframes errorFlash {
+  0%, 100% {
+    background: var(--color-background);
+  }
+  50% {
+    background: var(--color-error-flash);
+  }
+}
+
+.cell:has(+ .selected),
+.cell.selected {
+  border-right: 1px solid var(--color-brand-yellow);
+}
+
+.cellBlack {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  background: var(--color-black-square);
+  border: none;
+}
+
+.number {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  font-size: var(--cell-number-size);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+  line-height: 1;
+}
+
+.letter {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--cell-font-size);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.completedCell {
+  animation: cascadeFill 300ms ease-out forwards;
+  animation-play-state: paused;
+}
+
+.completedCell.completed {
+  animation-play-state: running;
+}
+
+@keyframes cascadeFill {
+  0% {
+    background: var(--color-background);
+  }
+  100% {
+    background: var(--color-brand-yellow);
+    border-color: var(--color-brand-yellow);
+  }
+}
+
+/* Filled cells have medium border */
+.cell:not(:empty) {
+  border-color: var(--color-border-medium);
+}

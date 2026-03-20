@@ -1,0 +1,18 @@
+.gridContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.grid {
+  display: inline-block;
+  border: 1px solid var(--color-border-medium);
+  border-radius: var(--grid-border-radius);
+  overflow: hidden;
+  background: var(--color-background);
+}
+
+.row {
+  display: flex;
+}
