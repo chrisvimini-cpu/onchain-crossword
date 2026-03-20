@@ -1,0 +1,16 @@
+{
+  "name": "The Mini: On-Chain",
+  "short_name": "Mini: On-Chain",
+  "description": "A daily crypto crossword by CoinDesk",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#F8BF1E",
+  "icons": [
+    {
+      "src": "/coindesk-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

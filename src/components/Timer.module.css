@@ -1,0 +1,8 @@
+.timer {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  min-width: 50px;
+  text-align: right;
+}
