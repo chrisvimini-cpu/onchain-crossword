@@ -319,24 +319,40 @@ function Game() {
     <div className={styles.game}>
       <header className={styles.header}>
         <div className={styles.headerLeft}>
-          <h1 className={styles.title}>The Mini: On-Chain</h1>
-          <span className={styles.by}>by</span>
-          <svg className={styles.logo} width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="10" fill="#F8BF1E"/>
-            <text x="12" y="17" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#000">C</text>
-          </svg>
+          <button
+            className={styles.menuButton}
+            aria-label="Menu"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path
+                d="M2.5 5H17.5M2.5 10H17.5M2.5 15H17.5"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+        <div className={styles.headerCenter}>
+          <h1 className={styles.title}>Onchain</h1>
+          <span className={styles.byLine}>by</span>
+          <img
+            src="/coindesk-logo.svg"
+            alt="CoinDesk"
+            className={styles.logo}
+          />
         </div>
         <div className={styles.headerRight}>
-          <Timer time={solveTime} isRunning={isRunning} />
           <button
             className={styles.iconButton}
             onClick={() => setShowStats(true)}
-            aria-label="Stats"
+            aria-label="Statistics"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <rect x="3" y="13" width="4" height="8" />
-              <rect x="10" y="8" width="4" height="13" />
-              <rect x="17" y="3" width="4" height="18" />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M16 11V3H8V9H2V21H22V11H16ZM10 5H14V19H10V5ZM4 11H8V19H4V11ZM20 19H16V13H20V19Z"
+                fill="currentColor"
+              />
             </svg>
           </button>
           <button
@@ -344,10 +360,11 @@ function Game() {
             onClick={() => setShowHelp(true)}
             aria-label="Help"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-              <line x1="12" y1="17" x2="12.01" y2="17" />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M11 18H13V16H11V18ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM12 6C9.79 6 8 7.79 8 10H10C10 8.9 10.9 8 12 8C13.1 8 14 8.9 14 10C14 12 11 11.75 11 15H13C13 12.75 16 12.5 16 10C16 7.79 14.21 6 12 6Z"
+                fill="currentColor"
+              />
             </svg>
           </button>
         </div>
