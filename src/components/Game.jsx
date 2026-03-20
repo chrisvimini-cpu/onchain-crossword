@@ -423,17 +423,17 @@ function Game() {
             isComplete={isComplete}
             errors={errors}
           />
-
-          <ClueBar
-            currentClue={selectedClue}
-            currentDirection={selectedDirection}
-            onNavigatePrevious={handleNavigatePrevious}
-            onNavigateNext={handleNavigateNext}
-            canGoPrevious={currentClueIndex > 0}
-            canGoNext={currentClueIndex < allClues.length - 1}
-          />
         </div>
       </main>
+
+      <ClueBar
+        currentClue={selectedClue}
+        currentDirection={selectedDirection}
+        onNavigatePrevious={handleNavigatePrevious}
+        onNavigateNext={handleNavigateNext}
+        canGoPrevious={currentClueIndex > 0}
+        canGoNext={currentClueIndex < allClues.length - 1}
+      />
 
       <Keyboard
         onLetterClick={handleLetterInput}
