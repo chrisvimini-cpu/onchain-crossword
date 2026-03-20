@@ -58,7 +58,7 @@
 .clueText {
   font-family: var(--font-family);
   font-weight: var(--font-weight-regular);
-  font-size: 17px;
+  font-size: 19px;
   color: var(--color-text-primary);
   line-height: 1.4;
 }
@@ -75,6 +75,6 @@
   }
 
   .clueText {
-    font-size: 15px;
+    font-size: 17px;
   }
 }
