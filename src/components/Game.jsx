@@ -6,6 +6,7 @@ import Timer from './Timer';
 import CompletionModal from './CompletionModal';
 import StatsModal from './StatsModal';
 import HelpModal from './HelpModal';
+import HamburgerMenu from './HamburgerMenu';
 import { getTodaysPuzzle } from '../lib/dailySelection';
 import { buildCellClueMap, checkPuzzle, getCellsForClue, findNextIncompleteWord } from '../lib/puzzleEngine';
 import { getPuzzleState, savePuzzleState, isTodayCompleted, recordCompletion } from '../lib/storage';
@@ -23,6 +24,7 @@ function Game() {
   const [showCompletion, setShowCompletion] = useState(false);
   const [showStats, setShowStats] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const [solveTime, setSolveTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [errors, setErrors] = useState([]);
@@ -363,6 +365,7 @@ function Game() {
         <div className={styles.headerLeft}>
           <button
             className={styles.menuButton}
+            onClick={() => setShowMenu(true)}
             aria-label="Menu"
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -456,6 +459,8 @@ function Game() {
       {showHelp && (
         <HelpModal onClose={() => setShowHelp(false)} />
       )}
+
+      <HamburgerMenu isOpen={showMenu} onClose={() => setShowMenu(false)} />
     </div>
   );
 }
