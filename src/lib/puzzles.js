@@ -1,6 +1,6 @@
 // Complete puzzle bank - each puzzle is a valid 5x5 crossword with interlocking words
 // All answers are crypto/web3/blockchain themed, 3-5 letters each
-// Optimized design with more words and fewer black squares
+// Optimized design: 5-6 clues per puzzle, 7-10 black squares, better interlocking
 
 export const puzzles = [
   {
@@ -148,57 +148,63 @@ export const puzzles = [
   {
     id: 8,
     grid: [
-      ['H', 'O', 'D', 'L', null],
-      ['A', null, null, null, null],
-      ['S', 'W', 'A', 'P', null],
-      ['H', null, null, null, null],
+      ['H', 'O', 'D', 'L', 'S'],
+      ['A', null, 'A', null, 'A'],
+      ['S', 'W', 'A', 'P', 'T'],
+      ['H', null, 'O', null, 'S'],
       [null, null, null, null, null],
     ],
     clues: {
       across: [
-        { number: 1, clue: "Hold long-term", row: 0, col: 0, length: 4, answer: "HODL" },
+        { number: 1, clue: "Hold long-term (plural)", row: 0, col: 0, length: 5, answer: "HODLS" },
         { number: 3, clue: "Exchange tokens", row: 2, col: 0, length: 4, answer: "SWAP" },
       ],
       down: [
         { number: 1, clue: "Cryptographic digest", row: 0, col: 0, length: 4, answer: "HASH" },
+        { number: 2, clue: "Decentralized autonomous org", row: 0, col: 2, length: 3, answer: "DAO" },
+        { number: 4, clue: "Bitcoin units", row: 0, col: 4, length: 4, answer: "SATS" },
       ]
     }
   },
   {
     id: 9,
     grid: [
-      ['K', 'E', 'Y', 'S', null],
-      [null, 'T', null, null, null],
-      ['A', 'P', 'E', 'D', null],
-      [null, 'H', null, null, null],
+      ['M', 'I', 'N', 'T', 'S'],
+      ['I', null, 'F', null, 'A'],
+      ['N', 'O', 'D', 'E', 'T'],
+      ['T', null, 'T', null, 'S'],
       [null, null, null, null, null],
     ],
     clues: {
       across: [
-        { number: 1, clue: "Private wallet codes", row: 0, col: 0, length: 4, answer: "KEYS" },
-        { number: 3, clue: "Bought impulsively", row: 2, col: 0, length: 4, answer: "APED" },
+        { number: 1, clue: "Create NFTs (plural)", row: 0, col: 0, length: 5, answer: "MINTS" },
+        { number: 3, clue: "Network validator", row: 2, col: 0, length: 4, answer: "NODE" },
       ],
       down: [
-        { number: 2, clue: "Ethereum", row: 0, col: 1, length: 3, answer: "ETH" },
+        { number: 1, clue: "Create NFT", row: 0, col: 0, length: 4, answer: "MINT" },
+        { number: 2, clue: "Non-fungible token", row: 0, col: 2, length: 3, answer: "NFT" },
+        { number: 4, clue: "Bitcoin units", row: 0, col: 4, length: 4, answer: "SATS" },
       ]
     }
   },
   {
     id: 10,
     grid: [
-      ['F', 'I', 'A', 'T', null],
-      ['O', null, null, null, null],
-      ['R', 'U', 'G', 'S', null],
-      ['K', null, null, null, null],
+      ['F', 'O', 'R', 'K', 'S'],
+      ['O', null, 'U', null, 'E'],
+      ['M', 'I', 'N', 'T', 'L'],
+      ['O', null, 'G', null, 'L'],
       [null, null, null, null, null],
     ],
     clues: {
       across: [
-        { number: 1, clue: "Government currency", row: 0, col: 0, length: 4, answer: "FIAT" },
-        { number: 3, clue: "Exit scams", row: 2, col: 0, length: 4, answer: "RUGS" },
+        { number: 1, clue: "Blockchain splits (plural)", row: 0, col: 0, length: 5, answer: "FORKS" },
+        { number: 3, clue: "Create NFT", row: 2, col: 0, length: 4, answer: "MINT" },
       ],
       down: [
-        { number: 1, clue: "Blockchain split", row: 0, col: 0, length: 4, answer: "FORK" },
+        { number: 1, clue: "Fear of missing out", row: 0, col: 0, length: 4, answer: "FOMO" },
+        { number: 2, clue: "Exit scams", row: 0, col: 2, length: 3, answer: "RUG" },
+        { number: 4, clue: "Paper hands action", row: 0, col: 4, length: 4, answer: "SELL" },
       ]
     }
   },
