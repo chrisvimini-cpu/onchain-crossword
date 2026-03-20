@@ -414,15 +414,6 @@ function Game() {
 
       <main className={styles.main}>
         <div className={styles.gameContent}>
-          <ClueBar
-            currentClue={selectedClue}
-            currentDirection={selectedDirection}
-            onNavigatePrevious={handleNavigatePrevious}
-            onNavigateNext={handleNavigateNext}
-            canGoPrevious={currentClueIndex > 0}
-            canGoNext={currentClueIndex < allClues.length - 1}
-          />
-
           <Grid
             puzzle={puzzle}
             userGrid={userGrid}
@@ -431,6 +422,15 @@ function Game() {
             onCellClick={handleCellClick}
             isComplete={isComplete}
             errors={errors}
+          />
+
+          <ClueBar
+            currentClue={selectedClue}
+            currentDirection={selectedDirection}
+            onNavigatePrevious={handleNavigatePrevious}
+            onNavigateNext={handleNavigateNext}
+            canGoPrevious={currentClueIndex > 0}
+            canGoNext={currentClueIndex < allClues.length - 1}
           />
         </div>
       </main>
