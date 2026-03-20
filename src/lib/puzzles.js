@@ -52,13 +52,12 @@ export const puzzles = [
       ['A', null, null, null, 'T'],
       ['G', 'W', 'E', 'I', 'H'],
       ['M', null, null, null, null],
-      ['I', 'N', 'F', 'T', null],
+      ['I', null, null, null, null],
     ],
     clues: {
       across: [
         { number: 1, clue: "Large crypto holder", row: 0, col: 0, length: 5, answer: "WHALE" },
         { number: 3, clue: "Smallest ether unit", row: 2, col: 0, length: 4, answer: "GWEI" },
-        { number: 5, clue: "Non-fungible token", row: 4, col: 0, length: 4, answer: "INFT" },
       ],
       down: [
         { number: 1, clue: "We're all gonna make it", row: 0, col: 0, length: 5, answer: "WAGMI" },
@@ -93,16 +92,15 @@ export const puzzles = [
       ['O', null, null, null, 'E'],
       ['O', 'D', 'D', 'S', 'L'],
       ['L', null, null, null, 'L'],
-      ['K', 'E', 'Y', 'S', null],
+      [null, null, null, null, null],
     ],
     clues: {
       across: [
         { number: 1, clue: "Price surges", row: 0, col: 0, length: 5, answer: "PUMPS" },
         { number: 3, clue: "Betting chances", row: 2, col: 0, length: 4, answer: "ODDS" },
-        { number: 5, clue: "Private wallet codes", row: 4, col: 0, length: 4, answer: "KEYS" },
       ],
       down: [
-        { number: 1, clue: "Liquidity reserve", row: 0, col: 0, length: 5, answer: "POOLK" },
+        { number: 1, clue: "Liquidity reserve", row: 0, col: 0, length: 4, answer: "POOL" },
         { number: 2, clue: "Paper hands action", row: 0, col: 4, length: 4, answer: "SELL" },
       ]
     }
@@ -114,16 +112,15 @@ export const puzzles = [
       ['E', null, null, null, 'A'],
       ['A', 'S', 'K', 'S', 'T'],
       ['R', null, null, null, 'S'],
-      ['D', 'A', 'P', 'P', null],
+      [null, null, null, null, null],
     ],
     clues: {
       across: [
         { number: 1, clue: "Optimistic traders", row: 0, col: 0, length: 5, answer: "BULLS" },
         { number: 3, clue: "Sell offers", row: 2, col: 0, length: 4, answer: "ASKS" },
-        { number: 5, clue: "Web3 application", row: 4, col: 0, length: 4, answer: "DAPP" },
       ],
       down: [
-        { number: 1, clue: "Pessimistic market", row: 0, col: 0, length: 5, answer: "BEARD" },
+        { number: 1, clue: "Pessimistic market", row: 0, col: 0, length: 4, answer: "BEAR" },
         { number: 2, clue: "Bitcoin units", row: 0, col: 4, length: 4, answer: "SATS" },
       ]
     }
@@ -155,16 +152,15 @@ export const puzzles = [
       ['A', null, null, null, null],
       ['S', 'W', 'A', 'P', null],
       ['H', null, null, null, null],
-      ['R', 'U', 'G', 'S', null],
+      [null, null, null, null, null],
     ],
     clues: {
       across: [
         { number: 1, clue: "Hold long-term", row: 0, col: 0, length: 4, answer: "HODL" },
         { number: 3, clue: "Exchange tokens", row: 2, col: 0, length: 4, answer: "SWAP" },
-        { number: 5, clue: "Exit scams", row: 4, col: 0, length: 4, answer: "RUGS" },
       ],
       down: [
-        { number: 1, clue: "Cryptographic digest", row: 0, col: 0, length: 5, answer: "HASHR" },
+        { number: 1, clue: "Cryptographic digest", row: 0, col: 0, length: 4, answer: "HASH" },
       ]
     }
   },
@@ -194,16 +190,15 @@ export const puzzles = [
       ['O', null, null, null, null],
       ['R', 'U', 'G', 'S', null],
       ['K', null, null, null, null],
-      ['M', 'I', 'N', 'T', null],
+      [null, null, null, null, null],
     ],
     clues: {
       across: [
         { number: 1, clue: "Government currency", row: 0, col: 0, length: 4, answer: "FIAT" },
         { number: 3, clue: "Exit scams", row: 2, col: 0, length: 4, answer: "RUGS" },
-        { number: 5, clue: "Create NFT", row: 4, col: 0, length: 4, answer: "MINT" },
       ],
       down: [
-        { number: 1, clue: "Blockchain split", row: 0, col: 0, length: 5, answer: "FORKM" },
+        { number: 1, clue: "Blockchain split", row: 0, col: 0, length: 4, answer: "FORK" },
       ]
     }
   },
