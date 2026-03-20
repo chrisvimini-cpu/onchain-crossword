@@ -371,29 +371,31 @@ function Game() {
       </header>
 
       <main className={styles.main}>
-        <Grid
-          puzzle={puzzle}
-          userGrid={userGrid}
-          selectedCells={selectedCells}
-          selectedCellIndex={selectedCellIndex}
-          onCellClick={handleCellClick}
-          isComplete={isComplete}
-          errors={errors}
-        />
+        <div className={styles.gameContent}>
+          <Grid
+            puzzle={puzzle}
+            userGrid={userGrid}
+            selectedCells={selectedCells}
+            selectedCellIndex={selectedCellIndex}
+            onCellClick={handleCellClick}
+            isComplete={isComplete}
+            errors={errors}
+          />
 
-        <CluePanel
-          puzzle={puzzle}
-          selectedClue={selectedClue}
-          selectedDirection={selectedDirection}
-          onClueClick={handleClueClick}
-        />
-
-        <Keyboard
-          onLetterClick={handleLetterInput}
-          onBackspace={handleBackspace}
-          onNextWord={handleNextWord}
-        />
+          <CluePanel
+            puzzle={puzzle}
+            selectedClue={selectedClue}
+            selectedDirection={selectedDirection}
+            onClueClick={handleClueClick}
+          />
+        </div>
       </main>
+
+      <Keyboard
+        onLetterClick={handleLetterInput}
+        onBackspace={handleBackspace}
+        onNextWord={handleNextWord}
+      />
 
       {showCompletion && (
         <CompletionModal
