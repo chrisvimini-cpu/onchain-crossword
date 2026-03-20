@@ -1,7 +1,8 @@
 .cell {
   width: var(--cell-size);
   height: var(--cell-size);
-  border: 1px solid var(--color-border-light);
+  border-right: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
   position: relative;
   display: flex;
   align-items: center;
@@ -9,10 +10,6 @@
   cursor: pointer;
   background: var(--color-background);
   transition: border-color var(--transition-fast), background-color var(--transition-fast);
-}
-
-.cell:not(:last-child) {
-  border-right: none;
 }
 
 .cell.selected {
