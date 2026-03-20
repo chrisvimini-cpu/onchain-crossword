@@ -120,24 +120,25 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: var(--spacing-lg) var(--spacing-md);
-  gap: var(--spacing-lg);
+  padding: var(--spacing-md) var(--spacing-md);
+  gap: var(--spacing-sm);
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 @media (max-width: 480px) {
   .header {
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: 0 14px;
   }
 
   .title {
-    font-size: 18px;
+    font-size: 30px;
   }
 
   .main {
-    padding: var(--spacing-md);
-    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
   }
 }
