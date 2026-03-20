@@ -6,9 +6,16 @@
 }
 
 .clueLists {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .clueLists {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .clueSection {
