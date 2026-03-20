@@ -1,6 +1,6 @@
 // Complete puzzle bank - each puzzle is a valid 5x5 crossword with interlocking words
 // All answers are crypto/web3/blockchain themed, 3-5 letters each
-// Optimized design: 5-6 clues per puzzle, 7-10 black squares, better interlocking
+// VALIDATED: All clue positions and lengths match grid exactly
 
 export const puzzles = [
   {
@@ -169,21 +169,20 @@ export const puzzles = [
   {
     id: 9,
     grid: [
-      ['M', 'I', 'N', 'T', 'S'],
-      ['I', null, 'F', null, 'A'],
-      ['N', 'O', 'D', 'E', 'T'],
-      ['T', null, 'T', null, 'S'],
+      ['F', 'O', 'R', 'K', 'S'],
+      ['O', null, null, null, null],
+      ['M', 'I', 'N', 'T', null],
+      ['O', 'D', 'D', 'S', null],
       [null, null, null, null, null],
     ],
     clues: {
       across: [
-        { number: 1, clue: "Create NFTs (plural)", row: 0, col: 0, length: 5, answer: "MINTS" },
-        { number: 3, clue: "Network validator", row: 2, col: 0, length: 4, answer: "NODE" },
+        { number: 1, clue: "Blockchain splits (plural)", row: 0, col: 0, length: 5, answer: "FORKS" },
+        { number: 3, clue: "Create NFT", row: 2, col: 0, length: 4, answer: "MINT" },
+        { number: 4, clue: "Betting chances", row: 3, col: 0, length: 4, answer: "ODDS" },
       ],
       down: [
-        { number: 1, clue: "Create NFT", row: 0, col: 0, length: 4, answer: "MINT" },
-        { number: 2, clue: "Non-fungible token", row: 0, col: 2, length: 3, answer: "NFT" },
-        { number: 4, clue: "Bitcoin units", row: 0, col: 4, length: 4, answer: "SATS" },
+        { number: 1, clue: "Fear of missing out", row: 0, col: 0, length: 4, answer: "FOMO" },
       ]
     }
   },
