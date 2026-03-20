@@ -1,13 +1,20 @@
 .clueBar {
+  position: fixed;
+  bottom: 200px;
+  left: 0;
+  right: 0;
   width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   background: #E3F2FD;
-  border-radius: 8px;
+  border-radius: 0;
   padding: var(--spacing-md);
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
   min-height: 64px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.08);
+  z-index: 51;
 }
 
 .arrowButton {
