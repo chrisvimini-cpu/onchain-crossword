@@ -120,21 +120,51 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: var(--spacing-md) var(--spacing-md);
-  gap: var(--spacing-sm);
-  max-width: 600px;
+  padding: var(--spacing-md);
+  padding-bottom: 220px;
+  max-width: 800px;
   width: 100%;
   margin: 0 auto;
-  overflow: hidden;
+  overflow-y: auto;
+}
+
+.gameContent {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: flex-start;
+  width: 100%;
 }
 
 @media (max-width: 480px) {
   .header {
-    padding: 0 14px;
+    padding: 0 8px;
   }
 
   .title {
-    font-size: 30px;
+    font-size: 24px;
+  }
+
+  .headerCenter {
+    gap: 3px;
+  }
+
+  .byLine {
+    font-size: 10px;
+  }
+
+  .logo {
+    height: 16px;
+  }
+
+  .iconButton {
+    padding: 6px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .menuButton {
+    width: 28px;
+    height: 28px;
   }
 
   .main {

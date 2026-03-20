@@ -6,6 +6,12 @@
   gap: 6px;
   align-items: center;
   border-top: 1px solid var(--color-border-empty);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: var(--z-keyboard);
 }
 
 .row {
