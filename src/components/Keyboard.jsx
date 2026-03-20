@@ -3,48 +3,58 @@ import styles from './Keyboard.module.css';
 const KEYBOARD_ROWS = [
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
   ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
-  ['NEXT', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'BACK'],
+  ['ENTER', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'BACK'],
 ];
 
-function Keyboard({ onLetterClick, onBackspace, onNextWord }) {
+function Keyboard({ onLetterClick, onBackspace, onNextWord, disabled }) {
   const handleKeyClick = (key) => {
+    if (disabled) return;
     if (key === 'BACK') {
       onBackspace();
-    } else if (key === 'NEXT') {
+    } else if (key === 'ENTER') {
       onNextWord();
     } else {
       onLetterClick(key);
     }
   };
 
+  const getKeyClass = (key) => {
+    const baseClass = styles.key;
+    if (key === 'ENTER' || key === 'BACK') {
+      return `${baseClass} ${styles.keyWide}`;
+    }
+    return baseClass;
+  };
+
+  const getKeyLabel = (key) => {
+    if (key === 'BACK') {
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M22 3H7C6.31 3 5.77 3.35 5.41 3.88L0 12L5.41 20.11C5.77 20.64 6.31 21 7 21H22C23.1 21 24 20.1 24 19V5C24 3.9 23.1 3 22 3ZM19 15.59L17.59 17L14 13.41L10.41 17L9 15.59L12.59 12L9 8.41L10.41 7L14 10.59L17.59 7L19 8.41L15.41 12L19 15.59Z"
+            fill="currentColor"
+          />
+        </svg>
+      );
+    }
+    return key;
+  };
+
   return (
     <div className={styles.keyboard}>
-      {KEYBOARD_ROWS.map((row, rowIndex) => (
-        <div key={rowIndex} className={styles.row}>
-          {row.map(key => {
-            const isSpecial = key === 'BACK' || key === 'NEXT';
-            return (
-              <button
-                key={key}
-                className={`${styles.key} ${isSpecial ? styles.specialKey : ''}`}
-                onClick={() => handleKeyClick(key)}
-              >
-                {key === 'BACK' ? (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" />
-                    <line x1="18" y1="9" x2="12" y2="15" />
-                    <line x1="12" y1="9" x2="18" y2="15" />
-                  </svg>
-                ) : key === 'NEXT' ? (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="9 18 15 12 9 6" />
-                  </svg>
-                ) : (
-                  key
-                )}
-              </button>
-            );
-          })}
+      {KEYBOARD_ROWS.map((row, i) => (
+        <div key={i} className={styles.row}>
+          {row.map((key) => (
+            <button
+              key={key}
+              className={getKeyClass(key)}
+              onClick={() => handleKeyClick(key)}
+              disabled={disabled}
+              aria-label={key === 'BACK' ? 'Backspace' : key}
+            >
+              {getKeyLabel(key)}
+            </button>
+          ))}
         </div>
       ))}
     </div>
