@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import Grid from './Grid';
-import CluePanel from './CluePanel';
+import ClueBar from './ClueBar';
 import Keyboard from './Keyboard';
 import Timer from './Timer';
 import CompletionModal from './CompletionModal';
@@ -17,6 +17,7 @@ function Game() {
   const [selectedClue, setSelectedClue] = useState(null);
   const [selectedDirection, setSelectedDirection] = useState('across');
   const [selectedCellIndex, setSelectedCellIndex] = useState(0);
+  const [currentClueIndex, setCurrentClueIndex] = useState(0);
   const [cellClueMap, setCellClueMap] = useState({});
   const [isComplete, setIsComplete] = useState(false);
   const [showCompletion, setShowCompletion] = useState(false);
@@ -26,6 +27,69 @@ function Game() {
   const [isRunning, setIsRunning] = useState(false);
   const [errors, setErrors] = useState([]);
   const timerRef = useRef(null);
+
+  // Compute flat list of all clues for navigation
+  const allClues = useMemo(() => {
+    if (!puzzle) return [];
+
+    const clueList = [];
+
+    puzzle.clues.across.forEach(clue => {
+      clueList.push({ clue, direction: 'across' });
+    });
+
+    puzzle.clues.down.forEach(clue => {
+      clueList.push({ clue, direction: 'down' });
+    });
+
+    // Sort by clue number
+    clueList.sort((a, b) => a.clue.number - b.clue.number);
+
+    return clueList;
+  }, [puzzle]);
+
+  // Utility function to sync currentClueIndex when clue changes
+  const syncClueIndex = useCallback((clue, direction) => {
+    const clueIndex = allClues.findIndex(
+      item => item.clue.number === clue.number && item.direction === direction
+    );
+    if (clueIndex !== -1) {
+      setCurrentClueIndex(clueIndex);
+    }
+  }, [allClues]);
+
+  // Handle previous clue navigation
+  const handleNavigatePrevious = useCallback(() => {
+    if (currentClueIndex > 0) {
+      const newIndex = currentClueIndex - 1;
+      setCurrentClueIndex(newIndex);
+
+      const { clue, direction } = allClues[newIndex];
+      setSelectedClue(clue);
+      setSelectedDirection(direction);
+
+      // Find first empty cell or select first cell
+      const cells = getCellsForClue(clue, direction);
+      const firstEmpty = cells.findIndex(cell => !userGrid[cell.row]?.[cell.col]);
+      setSelectedCellIndex(firstEmpty !== -1 ? firstEmpty : 0);
+    }
+  }, [currentClueIndex, allClues, userGrid]);
+
+  // Handle next clue navigation
+  const handleNavigateNext = useCallback(() => {
+    if (currentClueIndex < allClues.length - 1) {
+      const newIndex = currentClueIndex + 1;
+      setCurrentClueIndex(newIndex);
+
+      const { clue, direction } = allClues[newIndex];
+      setSelectedClue(clue);
+      setSelectedDirection(direction);
+
+      const cells = getCellsForClue(clue, direction);
+      const firstEmpty = cells.findIndex(cell => !userGrid[cell.row]?.[cell.col]);
+      setSelectedCellIndex(firstEmpty !== -1 ? firstEmpty : 0);
+    }
+  }, [currentClueIndex, allClues, userGrid]);
 
   // Initialize puzzle
   useEffect(() => {
@@ -59,6 +123,7 @@ function Game() {
       setSelectedClue(todaysPuzzle.clues.across[0]);
       setSelectedDirection('across');
       setSelectedCellIndex(0);
+      setCurrentClueIndex(0);
     }
   }, []);
 
@@ -134,33 +199,8 @@ function Game() {
     setSelectedClue(clue);
     setSelectedDirection(direction);
     setSelectedCellIndex(cellIndex);
-  }, [puzzle, cellClueMap, selectedClue, selectedDirection, selectedCellIndex, isComplete, isRunning]);
-
-  // Handle clue selection
-  const handleClueClick = useCallback((clue, direction) => {
-    if (isComplete) return;
-
-    // Start timer on first interaction
-    if (!isRunning) {
-      setIsRunning(true);
-    }
-
-    setSelectedClue(clue);
-    setSelectedDirection(direction);
-
-    // Find first empty cell in this clue, or select first cell
-    const cells = getCellsForClue(clue, direction);
-    let targetIndex = 0;
-
-    for (let i = 0; i < cells.length; i++) {
-      if (!userGrid[cells[i].row]?.[cells[i].col]) {
-        targetIndex = i;
-        break;
-      }
-    }
-
-    setSelectedCellIndex(targetIndex);
-  }, [userGrid, isComplete, isRunning]);
+    syncClueIndex(clue, direction);
+  }, [puzzle, cellClueMap, selectedClue, selectedDirection, selectedCellIndex, isComplete, isRunning, syncClueIndex]);
 
   // Handle letter input
   const handleLetterInput = useCallback((letter) => {
@@ -197,6 +237,7 @@ function Game() {
       if (nextWord) {
         setSelectedClue(nextWord.clue);
         setSelectedDirection(nextWord.direction);
+        syncClueIndex(nextWord.clue, nextWord.direction);
         const nextCells = getCellsForClue(nextWord.clue, nextWord.direction);
         const firstEmpty = nextCells.findIndex(cell => !newGrid[cell.row]?.[cell.col]);
         setSelectedCellIndex(firstEmpty !== -1 ? firstEmpty : 0);
@@ -207,7 +248,7 @@ function Game() {
     setTimeout(() => {
       checkPuzzleCompletion(newGrid);
     }, 100);
-  }, [selectedClue, selectedDirection, selectedCellIndex, userGrid, puzzle, isComplete, isRunning]);
+  }, [selectedClue, selectedDirection, selectedCellIndex, userGrid, puzzle, isComplete, isRunning, syncClueIndex]);
 
   // Handle backspace
   const handleBackspace = useCallback(() => {
@@ -280,11 +321,12 @@ function Game() {
     if (nextWord) {
       setSelectedClue(nextWord.clue);
       setSelectedDirection(nextWord.direction);
+      syncClueIndex(nextWord.clue, nextWord.direction);
       const cells = getCellsForClue(nextWord.clue, nextWord.direction);
       const firstEmpty = cells.findIndex(cell => !userGrid[cell.row]?.[cell.col]);
       setSelectedCellIndex(firstEmpty !== -1 ? firstEmpty : 0);
     }
-  }, [puzzle, userGrid, selectedDirection, isComplete]);
+  }, [puzzle, userGrid, selectedDirection, isComplete, syncClueIndex]);
 
   // Keyboard event handler
   useEffect(() => {
@@ -372,6 +414,15 @@ function Game() {
 
       <main className={styles.main}>
         <div className={styles.gameContent}>
+          <ClueBar
+            currentClue={selectedClue}
+            currentDirection={selectedDirection}
+            onNavigatePrevious={handleNavigatePrevious}
+            onNavigateNext={handleNavigateNext}
+            canGoPrevious={currentClueIndex > 0}
+            canGoNext={currentClueIndex < allClues.length - 1}
+          />
+
           <Grid
             puzzle={puzzle}
             userGrid={userGrid}
@@ -380,13 +431,6 @@ function Game() {
             onCellClick={handleCellClick}
             isComplete={isComplete}
             errors={errors}
-          />
-
-          <CluePanel
-            puzzle={puzzle}
-            selectedClue={selectedClue}
-            selectedDirection={selectedDirection}
-            onClueClick={handleClueClick}
           />
         </div>
       </main>
